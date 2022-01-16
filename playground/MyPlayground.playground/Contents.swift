@@ -1,6 +1,49 @@
 import UIKit
 
 /*
+ for - in
+ while
+ repeat - while
+ */
+var no2 = 6
+
+repeat {
+    no2 += 2
+} while no2 < 5
+            
+print(no2) // 조건에 맞지 않아도 repeat 은 최소 1번 실행하기 때문에 while 조건에 해당하지 않더라도 값은 증가함
+
+
+/*
+ while 조건식 {
+ // 실행할 구문
+ // 조건식 리턴값이 Bool 이여야함
+ }
+ */
+var no1 = 5
+
+while no1 < 10 {
+    no1 += 1;
+    print(no1)
+}
+
+
+/*
+ for 루프상수 in 순회대상 {
+ // 실행 구문
+ }
+ */
+let array = [1,2,3,4,5]
+for k in array {
+    print(k)
+}
+
+for i in 1...4 {
+    print(i)
+}
+
+
+/*
  조건문
  if, switch, guard
  */
@@ -31,7 +74,7 @@ switch color {
     case "yellow":
         print("노란색 입니다")
     default:
-        print("찾는 색상이 없습니다.") 
+        print("찾는 색상이 없습니다.")
 }
 
 let animal = "cat"
