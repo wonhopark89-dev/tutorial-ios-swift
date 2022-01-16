@@ -1,5 +1,52 @@
 import UIKit
 
+// 옵셔널
+var name1: String?
+var name2: String = "Gunter";
+
+
+// 옵셔널 해제 방법
+// - (1)명시적 해제
+// - 강제 해재, 비강제해재(옵셔널 바인딩)
+
+var oNumber: Int? = 3;
+print(oNumber)
+print(oNumber!) // 강제해제 ( 권장하지는 않음 )
+
+if let result = oNumber {
+    // 이렇게 해제할 경우 해제한 값은 if 문 안에서만 사용 가능
+    print(result)
+} else {
+    //
+    // print(result) // error 발생
+}
+
+func oTest() {
+    let oNumber2: Int? = 5
+    guard let result = oNumber2 else { return }
+    // 함수 전체에서 추출된 결과값(result) 사용가능
+    print(result)
+}
+
+// guard 를 통해서 옵셔널 해제 시 밖에서도 사용가능
+oTest()
+
+
+// - (2)묵시적 해제
+// - 컴파일러에 의한 자동 해제, 옵셔널의 묵시적 해제
+let oNumber3: Int? = 66;
+if oNumber3 == 66 {
+    print("oNumber3 가 66 입니다")
+} else {
+    print("oNumber3 이 66 이 아닙니다.")
+}
+
+let oString1 = "12"
+var stringToInt: Int! = Int(oString1);
+print(stringToInt + 1);
+
+
+
 /*
  for - in
  while
