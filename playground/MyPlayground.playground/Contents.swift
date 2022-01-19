@@ -1,4 +1,65 @@
 import UIKit
+import Darwin
+
+// 초기화 (initialization)
+// 클래스 구조체 또는 열거형의 인스턴스를 사용하기 위한 준비 과정
+// 클래스
+// 커스텀 init 함수 선언 가능
+// 클래스에서는 deinit 사용가능 ( 더이상 해당 인스턴스가 사용이 필요없어 질때 호출됨 )
+class Dog1 {
+    var nickname: String
+    var age: Int
+    
+    // 기본
+    init(nickname: String, age: Int) {
+        self.nickname = nickname
+        self.age = age
+    }
+    
+    init(age:Int) {
+        self.nickname = "booboo"
+        self.age = age
+    }
+
+    deinit {
+        print("deinit user ~~~~ ")
+    }
+}
+
+var dog1 = Dog1(nickname: "yoyo", age: 2)
+dog1.nickname
+dog1.age
+
+var dog2 = Dog1(age:4)
+dog2.nickname
+dog2.age
+
+var dog3: Dog1? = Dog1(nickname: "hihi", age: 8)
+dog3 = nil // 강제로 ni 넣어서 deinit 확인
+
+
+// 클래스
+class Dog1 {
+    var name: String = ""
+    var age: Int = 0
+        
+    init() {
+        // 인스턴스가 생성되면 호출
+        // 초기화 구문
+    }
+    
+    func introduce() {
+        print("name \(name) age \(age)")
+    }
+}
+
+var dog = Dog1()
+dog.name
+dog.name = "Coco"
+dog.name
+dog.age = 3
+dog.age
+dog.introduce()
 
 // 구조체
 // 구조체 인스턴스 = 값타임
