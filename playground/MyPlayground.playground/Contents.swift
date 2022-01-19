@@ -1,5 +1,30 @@
 import UIKit
 
+// 구조체
+// 구조체 인스턴스 = 값타임
+// 클래스 인스턴스 = 참조타입
+
+// 구조체, struct, 프로퍼티, 메서드, 대부분 파스칼 표기법
+struct User {
+    var nickname: String
+    var age: Int
+    
+    func information() {
+        print("\(nickname) \(age)");
+    }
+}
+
+// 인스턴스 생성 => 메모리에 생성
+// 구조체 기본 생성자 자동생성
+var user1 = User(nickname: "Pengsoo", age: 23)
+user1.nickname
+user1.nickname = "뽀로로" // 이름 변경
+user1.nickname
+
+user1.information();
+
+
+
 // 옵셔널
 var name1: String?
 var name2: String = "Gunter";
