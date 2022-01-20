@@ -1,6 +1,98 @@
 import UIKit
 import Darwin
 
+// 타입 프로퍼티, static 키워드
+struct SomeStructure0120 {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 1
+    }
+}
+
+SomeStructure0120.storedTypeProperty
+SomeStructure0120.computedTypeProperty
+SomeStructure0120.storedTypeProperty = "hello"
+SomeStructure0120.storedTypeProperty
+
+// ---------------------
+// property observer, 프로퍼티가 set 될때마다 호출됨
+// property observer 는 3가지 경우에만 사용가능, 저장 프로퍼티, 오버라이딩된 저장 계산 프로퍼티
+class Account0120 {
+    var credit: Int = 0 {
+        // 소괄호 이름 지정 ( 기본값 newValue, oldValue )
+        willSet {
+            // 값이 저장되기 직전에 호출
+             print("잔액이 \(credit)원에서 \(newValue)원으로 변경될 예정")
+        }
+        didSet {
+            // 값이 저정된 후에 호출
+            print("잔액이 \(oldValue)원에서 \(credit)원으로 변경되어있습니다.")
+        }
+    }
+}
+var account = Account0120();
+account.credit = 1000;
+
+
+// ----------------------
+// 계산(연산형) 프로퍼티, 클래스, 구조체, 열거형
+// get, set
+// get 만 사용하면 읽기전용이 된다
+// set 에 변수를 지정하지 않으면 기본 변수명은 newValue
+struct Stock0120 {
+    var averagePrice: Int
+    var quantity: Int
+    var purchasePrice: Int {
+        get {
+            return averagePrice * quantity
+        }
+        // 변수명 지정안하면 newValue 가 기본 변수명
+        set (newPrice) {
+            averagePrice = newPrice / quantity
+        }
+    }
+}
+var stock0120 = Stock0120(averagePrice: 1500, quantity:3)
+print(stock0120)
+stock0120.purchasePrice
+stock0120.purchasePrice = 3000
+stock0120.averagePrice
+
+// ------------------------------
+// 프로퍼티 (Properties) 란 ?
+// - 클래스, 구조체 또는 열거형 등에 관련된 값을 뜻한다.
+// 저장 프로퍼티, 연산 프로퍼티, 타입 프로퍼티
+// 저장
+struct Dog0120 {
+    // 저장 프로퍼티
+    var name: String
+    let gender: String
+}
+var dog0120 = Dog0120(name:"ABC", gender:"Male")
+print(dog0120)
+
+dog0120.name = "EDF"
+dog0120.name
+// dog0120.gender = "femail" // 에러 발생 let 상수여서
+
+let dog0120_1 = Dog0120(name: "ZZZ", gender: "Male")
+// dog0120_1.name = "ZXC" // 에러, 인스턴수가 상수여서
+
+// 클래스는 상수로 선언해도 변수로 선언한 값을 바꿀수 있다
+class Cat0120 {
+    var name: String
+    let gender: String
+    
+    init(name: String, gender: String) {
+        self.name = name
+        self.gender = gender
+    }
+}
+
+let cat0120 = Cat0120(name: "kiki", gender: "female")
+cat0120.name = "koko"
+print(cat0120.name)
+//--------------------------
 // 초기화 (initialization)
 // 클래스 구조체 또는 열거형의 인스턴스를 사용하기 위한 준비 과정
 // 클래스
