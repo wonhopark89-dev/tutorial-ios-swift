@@ -1,6 +1,58 @@
 import UIKit
 import Darwin
 
+class SomeClass0123 {
+    var count: Int = 0
+}
+
+var class0123_1 = SomeClass0123()
+var class0123_2 = class0123_1
+var class0123_3 = class0123_2
+
+class0123_3.count = 2
+class0123_1.count // 2 로 변경된 것을 알 수 있다
+
+struct SomeStruct0123 {
+    var count: Int = 0
+}
+
+var struct0123_1 = SomeStruct0123()
+var struct0123_2 = struct0123_1
+var struct0123_3 = struct0123_2
+
+struct0123_2.count = 2
+struct0123_3.count = 3
+
+struct0123_1.count // 바뀌지 않은 것을 확인할 수 있다
+struct0123_2.count
+struct0123_3.count // 매번 새로운 메모리에 할당하기 때문에 다른 변수에 영향이 없음
+
+// 클래스와 구조체의 차이점
+// 클래스
+// - 참조 타입
+// - ARC 로 메모리를 관리 ( 메모리 스택영역 포인터, 인스턴스의 메모리 주소만 할당되며, 실제 데이터는 힙 영역에 값이 할당 )
+// - 상속이 가능
+// - 타입 캐스팅을 통해 런타임에서 클래스 인스턴스의 타입을 확인할 수 있음
+// - deinit 을 사용하여 클래스 인스턴스의 메모리 할당을 해제할 수 있음
+// - 같은 클래스 인스턴스를 여러 개의 변수에 할당한 뒤 값을 변경 시키면 모든 변수에 영향을 줌 ( 메모리가 복사됨 )
+
+// 구조체
+// - 값 타입
+// 구조체 변수를 새로운 변수에 할당할 때 마다 새로운 구조체가 할당됩니다.
+// 즉 같은 구조체를 여러개의 변수에 할당한 뒤 값을 변경시키더라도 다른 변수에 영향을 주지 않음 ( 값 자체를 복사 )
+
+
+// 클래스와 구조체의 공통점
+// - 값을 저장할 프로퍼티를 선언할 수 있습니다.
+// - 함수적 기능을 하는 메서드를 선언 할 수 있습니다.
+// - 내부 값에 .을 사용하여 접근할 수 있습니다.
+// - 생성자를 사용해 초기 상태를 설정할 수 있습니다.
+// - extension 을 사용하여 기능을 확장할 수 있습니다.
+// - Protocal 을 채택하여 기능을 설정 할 수 있습니다.
+
+
+
+// -----------------------
 // 타입 프로퍼티, static 키워드
 struct SomeStructure0120 {
     static var storedTypeProperty = "Some value."
