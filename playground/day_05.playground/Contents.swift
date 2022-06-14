@@ -1,27 +1,55 @@
 import UIKit
 
-// 레인지
-// 0...5
-// 0,1,2,3,4,5
+// 옵셔널이란 ?
+// 값이 있는지 없는지 모른다.
 
-// 0..<5
-// 0,1,2,3,4
+var someVariable:Int? = nil
 
-for index in 0...5 {
-    print("\(index)")
+// Optional(10) 으로 감싸져있음
+if someVariable == nil {
+    someVariable = 10
+}
+print("someVariable: ", someVariable)
+// 출력 : Optional(10)
+
+// 언랩핑이란 ? 감싸져있는 것을 벗기는 것
+if let otherVariable = someVariable {
+    // somVariable 이 값이 있으면 otherVarible 에 넣겠다
+    print("언랩핑 되었음. 값이 있음 otherVariable", otherVariable)
+    // 출력 : 10
+} else {
+    print("값이 없다.")
 }
 
-for i in 0..<5 where i % 2 == 0 {
-    print("짝수 \(i)")
+someVariable = nil
+// 값이 없으면 기본값으로 우측값을 할당하겠다
+let myValue = someVariable ?? 20
+print("myValue", myValue)
+
+
+//----
+var firstValue : Int? = 30
+var secondValue : Int? = 50
+
+print("firstValue", firstValue)
+print("secondValue", secondValue)
+
+unwrap(parameter: firstValue)
+unwrap2(secondValue)
+
+func unwrap(parameter: Int?) {
+    print("unwrap() called")
+    // 값이 없으면 리턴, 지나가버림
+    guard let unWrappedParam = parameter else { return }
+    
+    print("unWrappedParam: ", unWrappedParam)
 }
 
-var randomInts: [Int] = []
-// var randomInts: [Int] = [Int]()
-// 사용하지 않으면 _ 언더바로 쓰면 된다
-
-for _ in 0..<25 {
-    let randomNumber = Int.random(in: 0...100)
-    randomInts.append(randomNumber)
+// call 할때 paramter 표기를 안하고 싶으면 언더바 사용
+func unwrap2(_ parameter: Int?) {
+    print("unwrap2() called")
+    // 값이 없으면 리턴, 지나가버림
+    guard let unWrappedParam = parameter else { return }
+    
+    print("unWrappedParam: ", unWrappedParam)
 }
-
-print("randomInts \(randomInts)")
